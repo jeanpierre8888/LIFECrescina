@@ -1,0 +1,14 @@
+[
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "default",
+		"primary": {
+			"demo": {
+				"__TYPE__": "FieldContent",
+				"value": "zebra",
+				"type": "Text"
+			}
+		},
+		"items": []
+	}
+]
