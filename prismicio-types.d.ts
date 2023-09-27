@@ -4,7 +4,7 @@ import type * as prismic from "@prismicio/client";
 
 type Simplify<T> = { [KeyType in keyof T]: T[KeyType] };
 
-type HomeDocumentDataSlicesSlice = never;
+type HomeDocumentDataSlicesSlice = StaticBannerSlice;
 
 /**
  * Content for Home documents
@@ -69,48 +69,78 @@ export type HomeDocument<Lang extends string = string> =
 export type AllDocumentTypes = HomeDocument;
 
 /**
- * Primary content in *DemoSlice → Primary*
+ * Primary content in *StaticBanner → Primary*
  */
-export interface DemoSliceSliceDefaultPrimary {
+export interface StaticBannerSliceDefaultPrimary {
   /**
-   * Demo field in *DemoSlice → Primary*
+   * Background Image field in *StaticBanner → Primary*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: static_banner.primary.background_image
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  background_image: prismic.ImageField<never>;
+
+  /**
+   * Main Title field in *StaticBanner → Primary*
    *
    * - **Field Type**: Text
    * - **Placeholder**: *None*
-   * - **API ID Path**: demo_slice.primary.demo
+   * - **API ID Path**: static_banner.primary.main_title
    * - **Documentation**: https://prismic.io/docs/field#key-text
    */
-  demo: prismic.KeyTextField;
+  main_title: prismic.KeyTextField;
+
+  /**
+   * Secondary Title field in *StaticBanner → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: static_banner.primary.secondary_title
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  secondary_title: prismic.KeyTextField;
+
+  /**
+   * Main Text field in *StaticBanner → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: static_banner.primary.main_text
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  main_text: prismic.KeyTextField;
 }
 
 /**
- * Default variation for DemoSlice Slice
+ * Default variation for StaticBanner Slice
  *
  * - **API ID**: `default`
  * - **Description**: Default
  * - **Documentation**: https://prismic.io/docs/slice
  */
-export type DemoSliceSliceDefault = prismic.SharedSliceVariation<
+export type StaticBannerSliceDefault = prismic.SharedSliceVariation<
   "default",
-  Simplify<DemoSliceSliceDefaultPrimary>,
+  Simplify<StaticBannerSliceDefaultPrimary>,
   never
 >;
 
 /**
- * Slice variation for *DemoSlice*
+ * Slice variation for *StaticBanner*
  */
-type DemoSliceSliceVariation = DemoSliceSliceDefault;
+type StaticBannerSliceVariation = StaticBannerSliceDefault;
 
 /**
- * DemoSlice Shared Slice
+ * StaticBanner Shared Slice
  *
- * - **API ID**: `demo_slice`
- * - **Description**: DemoSlice
+ * - **API ID**: `static_banner`
+ * - **Description**: StaticBanner
  * - **Documentation**: https://prismic.io/docs/slice
  */
-export type DemoSliceSlice = prismic.SharedSlice<
-  "demo_slice",
-  DemoSliceSliceVariation
+export type StaticBannerSlice = prismic.SharedSlice<
+  "static_banner",
+  StaticBannerSliceVariation
 >;
 
 declare module "@prismicio/client" {
@@ -127,10 +157,10 @@ declare module "@prismicio/client" {
       HomeDocumentData,
       HomeDocumentDataSlicesSlice,
       AllDocumentTypes,
-      DemoSliceSlice,
-      DemoSliceSliceDefaultPrimary,
-      DemoSliceSliceVariation,
-      DemoSliceSliceDefault,
+      StaticBannerSlice,
+      StaticBannerSliceDefaultPrimary,
+      StaticBannerSliceVariation,
+      StaticBannerSliceDefault,
     };
   }
 }

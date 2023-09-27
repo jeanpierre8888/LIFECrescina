@@ -12,6 +12,7 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "jsx": "preserve",
+    "typeRoots": ["prismicio-types.d.ts"],
     "incremental": true,
     "plugins": [
       {
@@ -19,7 +20,10 @@
       }
     ],
     "paths": {
-      "@/*": ["./src/*"]
+      "~ui/*": ["./src/ui/*"],
+      "~slices/*": ["./src/slices/*"],
+      "~src/*": ["./src/*"],
+      "~/*": ["./*"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
