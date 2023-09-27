@@ -4,8 +4,8 @@ import { HTMLProps, PropsWithChildren } from "react";
 import { TextTag, TextTagEnum, textTagMap } from "~ui/TextTag";
 
 export type TextProps = {
-  variation: "h1" | "text";
-  textColor?: "text-primary" | "text-secondary" | "text-gray";
+  variation: "h1" | "20" | "text";
+  textColor?: string;
   fontWeight?: "font-bold" | "font-normal";
   tag?: TextTagEnum;
 };
@@ -26,6 +26,7 @@ export const Text = ({
     case "h1":
       headingVariation = TextTagEnum.H1;
       break;
+    case "20":
     case "text":
       headingVariation = TextTagEnum.p;
       break;
@@ -40,6 +41,7 @@ export const Text = ({
       variation={headingVariation}
       className={clsx(className, {
         "text-36px": variation === "h1",
+        "text-20px": variation === "20",
         "text-16px": variation === "text",
         [textColor!]: textColor,
         "text-gris": !textColor,

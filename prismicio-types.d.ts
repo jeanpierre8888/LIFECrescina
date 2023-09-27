@@ -4,7 +4,7 @@ import type * as prismic from "@prismicio/client";
 
 type Simplify<T> = { [KeyType in keyof T]: T[KeyType] };
 
-type HomeDocumentDataSlicesSlice = StaticBannerSlice;
+type HomeDocumentDataSlicesSlice = CallToActionSlimSlice | StaticBannerSlice;
 
 /**
  * Content for Home documents
@@ -67,6 +67,71 @@ export type HomeDocument<Lang extends string = string> =
   prismic.PrismicDocumentWithoutUID<Simplify<HomeDocumentData>, "home", Lang>;
 
 export type AllDocumentTypes = HomeDocument;
+
+/**
+ * Primary content in *CallToActionSlim → Primary*
+ */
+export interface CallToActionSlimSliceDefaultPrimary {
+  /**
+   * Main Text field in *CallToActionSlim → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: call_to_action_slim.primary.main_text
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  main_text: prismic.KeyTextField;
+
+  /**
+   * Button Text field in *CallToActionSlim → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: call_to_action_slim.primary.button_text
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  button_text: prismic.KeyTextField;
+
+  /**
+   * Button Link field in *CallToActionSlim → Primary*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: call_to_action_slim.primary.button_link
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  button_link: prismic.LinkField;
+}
+
+/**
+ * Default variation for CallToActionSlim Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type CallToActionSlimSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<CallToActionSlimSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *CallToActionSlim*
+ */
+type CallToActionSlimSliceVariation = CallToActionSlimSliceDefault;
+
+/**
+ * CallToActionSlim Shared Slice
+ *
+ * - **API ID**: `call_to_action_slim`
+ * - **Description**: CallToActionSlim
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type CallToActionSlimSlice = prismic.SharedSlice<
+  "call_to_action_slim",
+  CallToActionSlimSliceVariation
+>;
 
 /**
  * Primary content in *StaticBanner → Primary*
@@ -157,6 +222,10 @@ declare module "@prismicio/client" {
       HomeDocumentData,
       HomeDocumentDataSlicesSlice,
       AllDocumentTypes,
+      CallToActionSlimSlice,
+      CallToActionSlimSliceDefaultPrimary,
+      CallToActionSlimSliceVariation,
+      CallToActionSlimSliceDefault,
       StaticBannerSlice,
       StaticBannerSliceDefaultPrimary,
       StaticBannerSliceVariation,

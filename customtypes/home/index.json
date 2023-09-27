@@ -11,6 +11,9 @@
         "fieldset": "Slice Zone",
         "config": {
           "choices": {
+            "call_to_action_slim": {
+              "type": "SharedSlice"
+            },
             "static_banner": {
               "type": "SharedSlice"
             }
