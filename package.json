@@ -1,13 +1,15 @@
 {
   "name": "lead-life-crescina",
+  "author": "Joel Mora <joel@lead.ec>",
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
     "build": "next build",
-    "start": "next start",
+    "dev": "next dev",
     "lint": "next lint",
-    "slicemachine": "start-slicemachine"
+    "slicemachine": "start-slicemachine",
+    "start": "next start",
+    "tsc": "tsc"
   },
   "dependencies": {
     "@prismicio/client": "^7.2.0",
@@ -22,9 +24,12 @@
     "@types/node": "latest",
     "@types/react": "latest",
     "@types/react-dom": "latest",
+    "@typescript-eslint/eslint-plugin": "^6.7.3",
+    "@typescript-eslint/parser": "^6.7.3",
     "autoprefixer": "latest",
     "eslint": "latest",
     "eslint-config-next": "latest",
+    "eslint-plugin-simple-import-sort": "^10.0.0",
     "postcss": "latest",
     "slice-machine-ui": "^1.14.1",
     "tailwindcss": "latest",
