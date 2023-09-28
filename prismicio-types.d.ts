@@ -5,6 +5,8 @@ import type * as prismic from "@prismicio/client";
 type Simplify<T> = { [KeyType in keyof T]: T[KeyType] };
 
 type HomeDocumentDataSlicesSlice =
+  | NewsSectionSlice
+  | NewsHeaderSlice
   | SliderSlice
   | CallToActionSlimSlice
   | StaticBannerSlice;
@@ -134,6 +136,156 @@ type CallToActionSlimSliceVariation = CallToActionSlimSliceDefault;
 export type CallToActionSlimSlice = prismic.SharedSlice<
   "call_to_action_slim",
   CallToActionSlimSliceVariation
+>;
+
+/**
+ * Primary content in *NewsHeader → Primary*
+ */
+export interface NewsHeaderSliceDefaultPrimary {
+  /**
+   * Logo field in *NewsHeader → Primary*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: news_header.primary.logo
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  logo: prismic.ImageField<never>;
+
+  /**
+   * Title field in *NewsHeader → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: news_header.primary.title
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  title: prismic.KeyTextField;
+
+  /**
+   * Text field in *NewsHeader → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: news_header.primary.text
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  text: prismic.KeyTextField;
+}
+
+/**
+ * Default variation for NewsHeader Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type NewsHeaderSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<NewsHeaderSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *NewsHeader*
+ */
+type NewsHeaderSliceVariation = NewsHeaderSliceDefault;
+
+/**
+ * NewsHeader Shared Slice
+ *
+ * - **API ID**: `news_header`
+ * - **Description**: NewsHeader
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type NewsHeaderSlice = prismic.SharedSlice<
+  "news_header",
+  NewsHeaderSliceVariation
+>;
+
+/**
+ * Primary content in *NewsSection → Items*
+ */
+export interface NewsSectionSliceDefaultItem {
+  /**
+   * Image field in *NewsSection → Items*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: news_section.items[].image
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  image: prismic.ImageField<never>;
+
+  /**
+   * Title field in *NewsSection → Items*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: news_section.items[].title
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  title: prismic.KeyTextField;
+
+  /**
+   * Subtitle field in *NewsSection → Items*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: news_section.items[].subtitle
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  subtitle: prismic.KeyTextField;
+
+  /**
+   * Text field in *NewsSection → Items*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: news_section.items[].text
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  text: prismic.KeyTextField;
+
+  /**
+   * Footer field in *NewsSection → Items*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: news_section.items[].footer
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  footer: prismic.KeyTextField;
+}
+
+/**
+ * Default variation for NewsSection Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type NewsSectionSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Record<string, never>,
+  Simplify<NewsSectionSliceDefaultItem>
+>;
+
+/**
+ * Slice variation for *NewsSection*
+ */
+type NewsSectionSliceVariation = NewsSectionSliceDefault;
+
+/**
+ * NewsSection Shared Slice
+ *
+ * - **API ID**: `news_section`
+ * - **Description**: NewsSection
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type NewsSectionSlice = prismic.SharedSlice<
+  "news_section",
+  NewsSectionSliceVariation
 >;
 
 /**
@@ -301,6 +453,14 @@ declare module "@prismicio/client" {
       CallToActionSlimSliceDefaultPrimary,
       CallToActionSlimSliceVariation,
       CallToActionSlimSliceDefault,
+      NewsHeaderSlice,
+      NewsHeaderSliceDefaultPrimary,
+      NewsHeaderSliceVariation,
+      NewsHeaderSliceDefault,
+      NewsSectionSlice,
+      NewsSectionSliceDefaultItem,
+      NewsSectionSliceVariation,
+      NewsSectionSliceDefault,
       SliderSlice,
       SliderSliceDefaultItem,
       SliderSliceVariation,

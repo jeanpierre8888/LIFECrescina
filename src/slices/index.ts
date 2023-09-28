@@ -4,6 +4,8 @@ import dynamic from "next/dynamic";
 
 export const components = {
   call_to_action_slim: dynamic(() => import("./CallToActionSlim")),
+  news_header: dynamic(() => import("./NewsHeader")),
+  news_section: dynamic(() => import("./NewsSection")),
   slider: dynamic(() => import("./Slider")),
   static_banner: dynamic(() => import("./StaticBanner")),
 };

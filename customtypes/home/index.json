@@ -11,6 +11,12 @@
         "fieldset": "Slice Zone",
         "config": {
           "choices": {
+            "news_section": {
+              "type": "SharedSlice"
+            },
+            "news_header": {
+              "type": "SharedSlice"
+            },
             "slider": {
               "type": "SharedSlice"
             },

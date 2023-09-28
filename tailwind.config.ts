@@ -8,9 +8,15 @@ const config: Config = {
   ],
   theme: {
     fontSize: {
+      "12px": ["12px", "15px"],
       "16px": ["16px", "24px"],
       "20px": ["20px", "normal"],
+      "21px": ["20px", "normal"],
       "34px": ["34px", "normal"],
+      "40px": ["40px", "24px"],
+    },
+    borderWidth: {
+      "3": "3px",
     },
     extend: {
       fontFamily: {
@@ -21,6 +27,7 @@ const config: Config = {
         primary: "#98272B",
         secondary: "#333333",
         gray: "#666666",
+        lightgray: "#F8F8F8",
       },
     },
   },

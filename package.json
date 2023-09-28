@@ -24,7 +24,7 @@
     "swiper": "^10.3.1"
   },
   "devDependencies": {
-    "@slicemachine/adapter-next": "^0.3.17",
+    "@slicemachine/adapter-next": "^0.3.18",
     "@types/node": "latest",
     "@types/react": "latest",
     "@types/react-dom": "latest",
@@ -35,7 +35,7 @@
     "eslint-config-next": "latest",
     "eslint-plugin-simple-import-sort": "^10.0.0",
     "postcss": "latest",
-    "slice-machine-ui": "^1.14.1",
+    "slice-machine-ui": "^1.15.0",
     "tailwindcss": "latest",
     "typescript": "latest"
   }
