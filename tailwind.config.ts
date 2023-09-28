@@ -10,7 +10,7 @@ const config: Config = {
     fontSize: {
       "16px": ["16px", "24px"],
       "20px": ["20px", "normal"],
-      "36px": ["36px", "normal"],
+      "34px": ["34px", "normal"],
     },
     extend: {
       fontFamily: {

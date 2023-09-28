@@ -11,6 +11,9 @@
         "fieldset": "Slice Zone",
         "config": {
           "choices": {
+            "slider": {
+              "type": "SharedSlice"
+            },
             "call_to_action_slim": {
               "type": "SharedSlice"
             },

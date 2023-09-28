@@ -1,4 +1,4 @@
-import "./globals.css";
+import "~/src/styles/globals.css";
 
 import type { Metadata } from "next";
 import { Libre_Franklin } from "next/font/google";

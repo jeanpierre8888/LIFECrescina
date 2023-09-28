@@ -4,7 +4,10 @@ import type * as prismic from "@prismicio/client";
 
 type Simplify<T> = { [KeyType in keyof T]: T[KeyType] };
 
-type HomeDocumentDataSlicesSlice = CallToActionSlimSlice | StaticBannerSlice;
+type HomeDocumentDataSlicesSlice =
+  | SliderSlice
+  | CallToActionSlimSlice
+  | StaticBannerSlice;
 
 /**
  * Content for Home documents
@@ -134,6 +137,78 @@ export type CallToActionSlimSlice = prismic.SharedSlice<
 >;
 
 /**
+ * Primary content in *Slider → Items*
+ */
+export interface SliderSliceDefaultItem {
+  /**
+   * Background Image field in *Slider → Items*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: slider.items[].background_image
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  background_image: prismic.ImageField<never>;
+
+  /**
+   * Main Text field in *Slider → Items*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: slider.items[].main_text
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  main_text: prismic.KeyTextField;
+
+  /**
+   * Button Text field in *Slider → Items*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: slider.items[].button_text
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  button_text: prismic.KeyTextField;
+
+  /**
+   * Button Link field in *Slider → Items*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: slider.items[].button_link
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  button_link: prismic.LinkField;
+}
+
+/**
+ * Default variation for Slider Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type SliderSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Record<string, never>,
+  Simplify<SliderSliceDefaultItem>
+>;
+
+/**
+ * Slice variation for *Slider*
+ */
+type SliderSliceVariation = SliderSliceDefault;
+
+/**
+ * Slider Shared Slice
+ *
+ * - **API ID**: `slider`
+ * - **Description**: Slider
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type SliderSlice = prismic.SharedSlice<"slider", SliderSliceVariation>;
+
+/**
  * Primary content in *StaticBanner → Primary*
  */
 export interface StaticBannerSliceDefaultPrimary {
@@ -226,6 +301,10 @@ declare module "@prismicio/client" {
       CallToActionSlimSliceDefaultPrimary,
       CallToActionSlimSliceVariation,
       CallToActionSlimSliceDefault,
+      SliderSlice,
+      SliderSliceDefaultItem,
+      SliderSliceVariation,
+      SliderSliceDefault,
       StaticBannerSlice,
       StaticBannerSliceDefaultPrimary,
       StaticBannerSliceVariation,

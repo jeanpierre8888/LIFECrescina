@@ -40,7 +40,7 @@ export const Text = ({
     <TextTag
       variation={headingVariation}
       className={clsx(className, {
-        "text-36px": variation === "h1",
+        "text-34px": variation === "h1",
         "text-20px": variation === "20",
         "text-16px": variation === "text",
         [textColor!]: textColor,
