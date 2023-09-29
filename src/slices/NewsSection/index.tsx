@@ -18,7 +18,7 @@ const NewsSection = ({ slice }: NewsSectionProps): JSX.Element => {
     <section
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
-      className="flex justify-center gap-[30px] pb-[95px]"
+      className="flex justify-center gap-[30px] pb-[220px]"
     >
       {items.map(({ image, title, subtitle, text, footer }, idx) => (
         <NewsCard

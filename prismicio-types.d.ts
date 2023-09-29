@@ -5,6 +5,7 @@ import type * as prismic from "@prismicio/client";
 type Simplify<T> = { [KeyType in keyof T]: T[KeyType] };
 
 type HomeDocumentDataSlicesSlice =
+  | FactSectionSlice
   | NewsSectionSlice
   | NewsHeaderSlice
   | SliderSlice
@@ -136,6 +137,121 @@ type CallToActionSlimSliceVariation = CallToActionSlimSliceDefault;
 export type CallToActionSlimSlice = prismic.SharedSlice<
   "call_to_action_slim",
   CallToActionSlimSliceVariation
+>;
+
+/**
+ * Primary content in *FactSection → Primary*
+ */
+export interface FactSectionSliceImageLeftPrimary {
+  /**
+   * Title field in *FactSection → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: fact_section.primary.title
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  title: prismic.KeyTextField;
+
+  /**
+   * Text field in *FactSection → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: fact_section.primary.text
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  text: prismic.KeyTextField;
+
+  /**
+   * Image field in *FactSection → Primary*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: fact_section.primary.image
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  image: prismic.ImageField<never>;
+}
+
+/**
+ * Image Left variation for FactSection Slice
+ *
+ * - **API ID**: `image_left`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type FactSectionSliceImageLeft = prismic.SharedSliceVariation<
+  "image_left",
+  Simplify<FactSectionSliceImageLeftPrimary>,
+  never
+>;
+
+/**
+ * Primary content in *FactSection → Primary*
+ */
+export interface FactSectionSliceImageRightPrimary {
+  /**
+   * Title field in *FactSection → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: fact_section.primary.title
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  title: prismic.KeyTextField;
+
+  /**
+   * Text field in *FactSection → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: fact_section.primary.text
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  text: prismic.KeyTextField;
+
+  /**
+   * Image field in *FactSection → Primary*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: fact_section.primary.image
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  image: prismic.ImageField<never>;
+}
+
+/**
+ * Image Right variation for FactSection Slice
+ *
+ * - **API ID**: `image_right`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type FactSectionSliceImageRight = prismic.SharedSliceVariation<
+  "image_right",
+  Simplify<FactSectionSliceImageRightPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *FactSection*
+ */
+type FactSectionSliceVariation =
+  | FactSectionSliceImageLeft
+  | FactSectionSliceImageRight;
+
+/**
+ * FactSection Shared Slice
+ *
+ * - **API ID**: `fact_section`
+ * - **Description**: FactSection
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type FactSectionSlice = prismic.SharedSlice<
+  "fact_section",
+  FactSectionSliceVariation
 >;
 
 /**
@@ -453,6 +569,12 @@ declare module "@prismicio/client" {
       CallToActionSlimSliceDefaultPrimary,
       CallToActionSlimSliceVariation,
       CallToActionSlimSliceDefault,
+      FactSectionSlice,
+      FactSectionSliceImageLeftPrimary,
+      FactSectionSliceImageRightPrimary,
+      FactSectionSliceVariation,
+      FactSectionSliceImageLeft,
+      FactSectionSliceImageRight,
       NewsHeaderSlice,
       NewsHeaderSliceDefaultPrimary,
       NewsHeaderSliceVariation,

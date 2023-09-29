@@ -11,6 +11,9 @@
         "fieldset": "Slice Zone",
         "config": {
           "choices": {
+            "fact_section": {
+              "type": "SharedSlice"
+            },
             "news_section": {
               "type": "SharedSlice"
             },
