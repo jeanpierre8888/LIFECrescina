@@ -8,6 +8,7 @@ export const components = {
   formulacion: dynamic(() => import("./Formulacion")),
   news_header: dynamic(() => import("./NewsHeader")),
   news_section: dynamic(() => import("./NewsSection")),
+  recomendaciones_section: dynamic(() => import("./RecomendacionesSection")),
   simple_banner: dynamic(() => import("./SimpleBanner")),
   slider: dynamic(() => import("./Slider")),
   static_banner: dynamic(() => import("./StaticBanner")),

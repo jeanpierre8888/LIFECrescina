@@ -11,6 +11,9 @@
         "fieldset": "Slice Zone",
         "config": {
           "choices": {
+            "recomendaciones_section": {
+              "type": "SharedSlice"
+            },
             "formulacion": {
               "type": "SharedSlice"
             },

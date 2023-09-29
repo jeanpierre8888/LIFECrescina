@@ -5,6 +5,7 @@ import type * as prismic from "@prismicio/client";
 type Simplify<T> = { [KeyType in keyof T]: T[KeyType] };
 
 type HomeDocumentDataSlicesSlice =
+  | RecomendacionesSectionSlice
   | FormulacionSlice
   | SimpleBannerSlice
   | FactSectionSlice
@@ -487,6 +488,76 @@ export type NewsSectionSlice = prismic.SharedSlice<
 >;
 
 /**
+ * Primary content in *RecomendacionesSection → Primary*
+ */
+export interface RecomendacionesSectionSliceDefaultPrimary {
+  /**
+   * Image field in *RecomendacionesSection → Primary*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: recomendaciones_section.primary.image
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  image: prismic.ImageField<never>;
+
+  /**
+   * Title field in *RecomendacionesSection → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: recomendaciones_section.primary.title
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  title: prismic.KeyTextField;
+}
+
+/**
+ * Primary content in *RecomendacionesSection → Items*
+ */
+export interface RecomendacionesSectionSliceDefaultItem {
+  /**
+   * Text field in *RecomendacionesSection → Items*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: recomendaciones_section.items[].text
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  text: prismic.KeyTextField;
+}
+
+/**
+ * Default variation for RecomendacionesSection Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type RecomendacionesSectionSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<RecomendacionesSectionSliceDefaultPrimary>,
+  Simplify<RecomendacionesSectionSliceDefaultItem>
+>;
+
+/**
+ * Slice variation for *RecomendacionesSection*
+ */
+type RecomendacionesSectionSliceVariation = RecomendacionesSectionSliceDefault;
+
+/**
+ * RecomendacionesSection Shared Slice
+ *
+ * - **API ID**: `recomendaciones_section`
+ * - **Description**: RecomendacionesSection
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type RecomendacionesSectionSlice = prismic.SharedSlice<
+  "recomendaciones_section",
+  RecomendacionesSectionSliceVariation
+>;
+
+/**
  * Primary content in *SimpleBanner → Primary*
  */
 export interface SimpleBannerSliceDefaultPrimary {
@@ -725,6 +796,11 @@ declare module "@prismicio/client" {
       NewsSectionSliceDefaultItem,
       NewsSectionSliceVariation,
       NewsSectionSliceDefault,
+      RecomendacionesSectionSlice,
+      RecomendacionesSectionSliceDefaultPrimary,
+      RecomendacionesSectionSliceDefaultItem,
+      RecomendacionesSectionSliceVariation,
+      RecomendacionesSectionSliceDefault,
       SimpleBannerSlice,
       SimpleBannerSliceDefaultPrimary,
       SimpleBannerSliceVariation,
