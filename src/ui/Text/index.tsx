@@ -6,6 +6,7 @@ import { TextTag, TextTagEnum, textTagMap } from "~ui/TextTag";
 export type TextProps = {
   variation:
     | "h1"
+    | "h4"
     | "h6"
     | "12"
     | "20"
@@ -38,6 +39,9 @@ export const Text = ({
     case "h1":
       headingVariation = TextTagEnum.H1;
       break;
+    case "h4":
+      headingVariation = TextTagEnum.H4;
+      break;
     case "h6":
       headingVariation = TextTagEnum.H6;
       break;
@@ -62,6 +66,7 @@ export const Text = ({
       variation={headingVariation}
       className={clsx(className, {
         "text-34px": variation === "h1",
+        "text-35px": variation === "h4",
         "text-21px": variation === "h6",
         "text-12px": variation === "12",
         "text-20px": variation === "20",

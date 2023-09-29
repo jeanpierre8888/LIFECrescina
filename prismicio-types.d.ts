@@ -5,6 +5,7 @@ import type * as prismic from "@prismicio/client";
 type Simplify<T> = { [KeyType in keyof T]: T[KeyType] };
 
 type HomeDocumentDataSlicesSlice =
+  | EscalaSectionSlice
   | InstructionsSectionSlice
   | RecomendacionesSectionSlice
   | FormulacionSlice
@@ -141,6 +142,81 @@ type CallToActionSlimSliceVariation = CallToActionSlimSliceDefault;
 export type CallToActionSlimSlice = prismic.SharedSlice<
   "call_to_action_slim",
   CallToActionSlimSliceVariation
+>;
+
+/**
+ * Primary content in *EscalaSection → Primary*
+ */
+export interface EscalaSectionSliceDefaultPrimary {
+  /**
+   * Pretitle field in *EscalaSection → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: escala_section.primary.pretitle
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  pretitle: prismic.KeyTextField;
+
+  /**
+   * Title field in *EscalaSection → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: escala_section.primary.title
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  title: prismic.KeyTextField;
+
+  /**
+   * Description field in *EscalaSection → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: escala_section.primary.description
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  description: prismic.KeyTextField;
+
+  /**
+   * Image field in *EscalaSection → Primary*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: escala_section.primary.image
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  image: prismic.ImageField<never>;
+}
+
+/**
+ * Default variation for EscalaSection Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type EscalaSectionSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<EscalaSectionSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *EscalaSection*
+ */
+type EscalaSectionSliceVariation = EscalaSectionSliceDefault;
+
+/**
+ * EscalaSection Shared Slice
+ *
+ * - **API ID**: `escala_section`
+ * - **Description**: EscalaSection
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type EscalaSectionSlice = prismic.SharedSlice<
+  "escala_section",
+  EscalaSectionSliceVariation
 >;
 
 /**
@@ -848,6 +924,10 @@ declare module "@prismicio/client" {
       CallToActionSlimSliceDefaultPrimary,
       CallToActionSlimSliceVariation,
       CallToActionSlimSliceDefault,
+      EscalaSectionSlice,
+      EscalaSectionSliceDefaultPrimary,
+      EscalaSectionSliceVariation,
+      EscalaSectionSliceDefault,
       FactSectionSlice,
       FactSectionSliceImageLeftPrimary,
       FactSectionSliceImageRightPrimary,

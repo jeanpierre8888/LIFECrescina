@@ -11,6 +11,9 @@
         "fieldset": "Slice Zone",
         "config": {
           "choices": {
+            "escala_section": {
+              "type": "SharedSlice"
+            },
             "instructions_section": {
               "type": "SharedSlice"
             },

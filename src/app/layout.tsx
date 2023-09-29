@@ -20,11 +20,7 @@ type RootLayoutProps = {
 const RootLayout = ({ children }: RootLayoutProps) => {
   return (
     <html lang="es-LA">
-      <body className={libreFranklinFont.className}>
-        <section>Menu</section>
-        {children}
-        <section>Footer</section>
-      </body>
+      <body className={libreFranklinFont.className}>{children}</body>
     </html>
   );
 };

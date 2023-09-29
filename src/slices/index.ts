@@ -4,6 +4,7 @@ import dynamic from "next/dynamic";
 
 export const components = {
   call_to_action_slim: dynamic(() => import("./CallToActionSlim")),
+  escala_section: dynamic(() => import("./EscalaSection")),
   fact_section: dynamic(() => import("./FactSection")),
   formulacion: dynamic(() => import("./Formulacion")),
   instructions_section: dynamic(() => import("./InstructionsSection")),

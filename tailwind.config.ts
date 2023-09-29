@@ -16,6 +16,7 @@ const config: Config = {
       "28px": ["28px", "normal"],
       "32px": ["32px", "normal"],
       "34px": ["34px", "normal"],
+      "35px": ["35px", "43px"],
       "40px": ["40px", "24px"],
       "48px": ["48px", "normal"],
     },
