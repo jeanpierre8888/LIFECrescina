@@ -12,6 +12,7 @@ const config: Config = {
       "16px": ["16px", "24px"],
       "20px": ["20px", "normal"],
       "21px": ["20px", "normal"],
+      "24px": ["24px", "normal"],
       "28px": ["28px", "normal"],
       "34px": ["34px", "normal"],
       "40px": ["40px", "24px"],

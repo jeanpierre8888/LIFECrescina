@@ -5,6 +5,7 @@ import type * as prismic from "@prismicio/client";
 type Simplify<T> = { [KeyType in keyof T]: T[KeyType] };
 
 type HomeDocumentDataSlicesSlice =
+  | FormulacionSlice
   | SimpleBannerSlice
   | FactSectionSlice
   | NewsSectionSlice
@@ -253,6 +254,86 @@ type FactSectionSliceVariation =
 export type FactSectionSlice = prismic.SharedSlice<
   "fact_section",
   FactSectionSliceVariation
+>;
+
+/**
+ * Primary content in *Formulacion → Primary*
+ */
+export interface FormulacionSliceDefaultPrimary {
+  /**
+   * Title field in *Formulacion → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: formulacion.primary.title
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  title: prismic.KeyTextField;
+
+  /**
+   * Image field in *Formulacion → Primary*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: formulacion.primary.image
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  image: prismic.ImageField<never>;
+}
+
+/**
+ * Primary content in *Formulacion → Items*
+ */
+export interface FormulacionSliceDefaultItem {
+  /**
+   * Title field in *Formulacion → Items*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: formulacion.items[].title
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  title: prismic.KeyTextField;
+
+  /**
+   * Text field in *Formulacion → Items*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: formulacion.items[].text
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  text: prismic.KeyTextField;
+}
+
+/**
+ * Default variation for Formulacion Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type FormulacionSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<FormulacionSliceDefaultPrimary>,
+  Simplify<FormulacionSliceDefaultItem>
+>;
+
+/**
+ * Slice variation for *Formulacion*
+ */
+type FormulacionSliceVariation = FormulacionSliceDefault;
+
+/**
+ * Formulacion Shared Slice
+ *
+ * - **API ID**: `formulacion`
+ * - **Description**: Formulacion
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type FormulacionSlice = prismic.SharedSlice<
+  "formulacion",
+  FormulacionSliceVariation
 >;
 
 /**
@@ -631,6 +712,11 @@ declare module "@prismicio/client" {
       FactSectionSliceVariation,
       FactSectionSliceImageLeft,
       FactSectionSliceImageRight,
+      FormulacionSlice,
+      FormulacionSliceDefaultPrimary,
+      FormulacionSliceDefaultItem,
+      FormulacionSliceVariation,
+      FormulacionSliceDefault,
       NewsHeaderSlice,
       NewsHeaderSliceDefaultPrimary,
       NewsHeaderSliceVariation,

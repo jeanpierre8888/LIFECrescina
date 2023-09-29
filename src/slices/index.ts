@@ -5,6 +5,7 @@ import dynamic from "next/dynamic";
 export const components = {
   call_to_action_slim: dynamic(() => import("./CallToActionSlim")),
   fact_section: dynamic(() => import("./FactSection")),
+  formulacion: dynamic(() => import("./Formulacion")),
   news_header: dynamic(() => import("./NewsHeader")),
   news_section: dynamic(() => import("./NewsSection")),
   simple_banner: dynamic(() => import("./SimpleBanner")),
