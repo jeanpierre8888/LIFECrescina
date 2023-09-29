@@ -15,6 +15,7 @@ const config: Config = {
       "28px": ["28px", "normal"],
       "34px": ["34px", "normal"],
       "40px": ["40px", "24px"],
+      "48px": ["48px", "normal"],
     },
     borderWidth: {
       "3": "3px",

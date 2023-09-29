@@ -11,6 +11,9 @@
         "fieldset": "Slice Zone",
         "config": {
           "choices": {
+            "simple_banner": {
+              "type": "SharedSlice"
+            },
             "fact_section": {
               "type": "SharedSlice"
             },

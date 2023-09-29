@@ -5,6 +5,7 @@ import type * as prismic from "@prismicio/client";
 type Simplify<T> = { [KeyType in keyof T]: T[KeyType] };
 
 type HomeDocumentDataSlicesSlice =
+  | SimpleBannerSlice
   | FactSectionSlice
   | NewsSectionSlice
   | NewsHeaderSlice
@@ -405,6 +406,61 @@ export type NewsSectionSlice = prismic.SharedSlice<
 >;
 
 /**
+ * Primary content in *SimpleBanner → Primary*
+ */
+export interface SimpleBannerSliceDefaultPrimary {
+  /**
+   * Background field in *SimpleBanner → Primary*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: simple_banner.primary.background
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  background: prismic.ImageField<never>;
+
+  /**
+   * Title field in *SimpleBanner → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: simple_banner.primary.title
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  title: prismic.KeyTextField;
+}
+
+/**
+ * Default variation for SimpleBanner Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type SimpleBannerSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<SimpleBannerSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *SimpleBanner*
+ */
+type SimpleBannerSliceVariation = SimpleBannerSliceDefault;
+
+/**
+ * SimpleBanner Shared Slice
+ *
+ * - **API ID**: `simple_banner`
+ * - **Description**: SimpleBanner
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type SimpleBannerSlice = prismic.SharedSlice<
+  "simple_banner",
+  SimpleBannerSliceVariation
+>;
+
+/**
  * Primary content in *Slider → Items*
  */
 export interface SliderSliceDefaultItem {
@@ -583,6 +639,10 @@ declare module "@prismicio/client" {
       NewsSectionSliceDefaultItem,
       NewsSectionSliceVariation,
       NewsSectionSliceDefault,
+      SimpleBannerSlice,
+      SimpleBannerSliceDefaultPrimary,
+      SimpleBannerSliceVariation,
+      SimpleBannerSliceDefault,
       SliderSlice,
       SliderSliceDefaultItem,
       SliderSliceVariation,

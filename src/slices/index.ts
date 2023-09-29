@@ -7,6 +7,7 @@ export const components = {
   fact_section: dynamic(() => import("./FactSection")),
   news_header: dynamic(() => import("./NewsHeader")),
   news_section: dynamic(() => import("./NewsSection")),
+  simple_banner: dynamic(() => import("./SimpleBanner")),
   slider: dynamic(() => import("./Slider")),
   static_banner: dynamic(() => import("./StaticBanner")),
 };
