@@ -1,6 +1,5 @@
 import { Content } from "@prismicio/client";
 import { PrismicImage, SliceComponentProps } from "@prismicio/react";
-import { Fragment } from "react";
 
 import { Text } from "~ui/Text";
 /**

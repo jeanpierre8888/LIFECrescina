@@ -1,0 +1,42 @@
+{
+  "id": "instructions_section",
+  "type": "SharedSlice",
+  "name": "InstructionsSection",
+  "description": "InstructionsSection",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "title": {
+          "type": "Text",
+          "config": {
+            "label": "Title",
+            "placeholder": ""
+          }
+        },
+        "video_url": {
+          "type": "Link",
+          "config": {
+            "label": "Video Url",
+            "placeholder": "",
+            "select": null
+          }
+        }
+      },
+      "items": {
+        "text": {
+          "type": "Text",
+          "config": {
+            "label": "Text",
+            "placeholder": ""
+          }
+        }
+      }
+    }
+  ]
+}

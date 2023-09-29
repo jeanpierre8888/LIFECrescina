@@ -6,6 +6,7 @@ export const components = {
   call_to_action_slim: dynamic(() => import("./CallToActionSlim")),
   fact_section: dynamic(() => import("./FactSection")),
   formulacion: dynamic(() => import("./Formulacion")),
+  instructions_section: dynamic(() => import("./InstructionsSection")),
   news_header: dynamic(() => import("./NewsHeader")),
   news_section: dynamic(() => import("./NewsSection")),
   recomendaciones_section: dynamic(() => import("./RecomendacionesSection")),

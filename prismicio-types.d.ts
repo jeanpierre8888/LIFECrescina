@@ -5,6 +5,7 @@ import type * as prismic from "@prismicio/client";
 type Simplify<T> = { [KeyType in keyof T]: T[KeyType] };
 
 type HomeDocumentDataSlicesSlice =
+  | InstructionsSectionSlice
   | RecomendacionesSectionSlice
   | FormulacionSlice
   | SimpleBannerSlice
@@ -335,6 +336,76 @@ type FormulacionSliceVariation = FormulacionSliceDefault;
 export type FormulacionSlice = prismic.SharedSlice<
   "formulacion",
   FormulacionSliceVariation
+>;
+
+/**
+ * Primary content in *InstructionsSection → Primary*
+ */
+export interface InstructionsSectionSliceDefaultPrimary {
+  /**
+   * Title field in *InstructionsSection → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: instructions_section.primary.title
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  title: prismic.KeyTextField;
+
+  /**
+   * Video Url field in *InstructionsSection → Primary*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: instructions_section.primary.video_url
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  video_url: prismic.LinkField;
+}
+
+/**
+ * Primary content in *InstructionsSection → Items*
+ */
+export interface InstructionsSectionSliceDefaultItem {
+  /**
+   * Text field in *InstructionsSection → Items*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: instructions_section.items[].text
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  text: prismic.KeyTextField;
+}
+
+/**
+ * Default variation for InstructionsSection Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type InstructionsSectionSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<InstructionsSectionSliceDefaultPrimary>,
+  Simplify<InstructionsSectionSliceDefaultItem>
+>;
+
+/**
+ * Slice variation for *InstructionsSection*
+ */
+type InstructionsSectionSliceVariation = InstructionsSectionSliceDefault;
+
+/**
+ * InstructionsSection Shared Slice
+ *
+ * - **API ID**: `instructions_section`
+ * - **Description**: InstructionsSection
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type InstructionsSectionSlice = prismic.SharedSlice<
+  "instructions_section",
+  InstructionsSectionSliceVariation
 >;
 
 /**
@@ -788,6 +859,11 @@ declare module "@prismicio/client" {
       FormulacionSliceDefaultItem,
       FormulacionSliceVariation,
       FormulacionSliceDefault,
+      InstructionsSectionSlice,
+      InstructionsSectionSliceDefaultPrimary,
+      InstructionsSectionSliceDefaultItem,
+      InstructionsSectionSliceVariation,
+      InstructionsSectionSliceDefault,
       NewsHeaderSlice,
       NewsHeaderSliceDefaultPrimary,
       NewsHeaderSliceVariation,
